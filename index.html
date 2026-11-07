@@ -1,91 +1,158 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>For My Panda Vanshika</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Vanshika!</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Poppins,sans-serif;background:#ffe6ea;display:flex;justify-content:center}
-.page{width:100%;max-width:420px;background:#ffe4e8;min-height:100vh;position:relative}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Fredoka',sans-serif;background:#FFF7ED;overflow-x:hidden;min-height:100vh}
 .hidden{display:none!important}
-#lock{background:#ffd6dd;min-height:100vh;text-align:center;padding:32px 20px}
-.dot{width:20px;height:20px;border-radius:50%;border:2px solid #ff2f5b;display:inline-block;margin:0 6px} .dot.on{background:#ff2f5b}
-.key{width:72px;height:72px;border-radius:50%;border:none;background:white;font-size:22px;font-weight:700;margin:7px;box-shadow:0 4px 10px rgba(0,0,0,.12);cursor:pointer}
-.title{font-family:'Dancing Script';font-size:34px;color:#c72a48} .img{width:100%;border-radius:18px;display:block}
-.card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.12);margin:12px 0}
-.gift{background:white;border-radius:22px;padding:16px;margin:12px auto;max-width:280px;box-shadow:0 6px 20px rgba(0,0,0,.12);cursor:pointer}
-.btn{background:#ff2f5b;color:white;border:none;padding:13px 28px;border-radius:28px;font-weight:600;margin-top:16px;cursor:pointer}
-.back{position:absolute;top:12px;left:12px;background:white;border:none;width:36px;height:36px;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,.15);cursor:pointer}
-</style></head><body>
-<div class="page">
-<div id="lock">
-<div style="font-size:90px">🐼🚪</div>
-<div style="color:#ff2f5b;font-weight:700;font-size:22px" id="msg">Enter Passcode</div>
-<p style="color:#7a4a52;font-size:13px">Hint: My Panda's birth year ✨ 2007</p>
-<div style="margin:20px 0"><span class="dot" id="d1"></span><span class="dot" id="d2"></span><span class="dot" id="d3"></span><span class="dot" id="d4"></span></div>
-<div>
-<button class="key" onclick="tap(1)">1</button><button class="key" onclick="tap(2)">2</button><button class="key" onclick="tap(3)">3</button><br>
-<button class="key" onclick="tap(4)">4</button><button class="key" onclick="tap(5)">5</button><button class="key" onclick="tap(6)">6</button><br>
-<button class="key" onclick="tap(7)">7</button><button class="key" onclick="tap(8)">8</button><button class="key" onclick="tap(9)">9</button><br>
-<button class="key" style="visibility:hidden">0</button><button class="key" onclick="tap(0)">0</button><button class="key" onclick="clr()">⌫</button>
-</div>
-<div style="font-size:40px;margin-top:15px">🧸🎀🧸</div>
+
+/* LOCK SCREEN */
+#lockScreen{position:fixed;inset:0;background:linear-gradient(135deg,#FFE4E6,#FFF7ED,#E0E7FF);display:flex;align-items:center;justify-content:center;z-index:100}
+.lockCard{background:white;padding:40px 30px;border-radius:30px;box-shadow:0 20px 40px rgba(0,0,0,0.1);text-align:center;max-width:380px;width:90%;border:4px solid #FFB6C1}
+.lockCard img{width:180px;height:180px;object-fit:cover;border-radius:20px;margin-bottom:15px;border:3px solid #FFCBD1}
+.lockCard h2{font-family:'Patrick Hand',cursive;font-size:28px;color:#FF6B8A;margin-bottom:8px}
+.lockCard p{color:#888;margin-bottom:18px;font-size:14px}
+.lockCard input{width:100%;padding:14px;border:3px solid #FFD6D9;border-radius:15px;font-size:20px;text-align:center;letter-spacing:8px;outline:none;margin-bottom:12px}
+.lockCard button{width:100%;padding:14px;background:#FF6B8A;color:white;border:none;border-radius:15px;font-size:18px;font-weight:700;cursor:pointer}
+.error{color:#FF4D6D;font-size:13px;margin-top:10px;display:none}
+
+/* PAGES */
+.page{min-height:100vh;padding:30px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+h1{font-family:'Patrick Hand',cursive;font-size:42px;color:#FF6B8A;line-height:1.1;margin-bottom:12px}
+.sub{color:#FF8FA3;font-size:16px;margin-bottom:20px}
+.card{background:white;border-radius:25px;padding:25px;box-shadow:0 10px 30px rgba(255,107,138,0.15);border:3px solid #FFE4E6;max-width:420px;width:100%}
+.card img{width:100%;border-radius:18px;object-fit:cover;margin-bottom:15px}
+.btn{background:#FF6B8A;color:white;border:none;padding:14px 28px;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;margin:8px;box-shadow:0 6px 0 #E85A7A}
+.btn:active{transform:translateY(3px);box-shadow:0 3px 0 #E85A7A}
+.btn-outline{background:white;color:#FF6B8A;border:3px solid #FF6B8A;box-shadow:none}
+
+.cake{font-size:80px;animation:float 2s infinite ease-in-out}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.letterText{font-family:'Patrick Hand',cursive;font-size:18px;line-height:1.6;color:#5A3A42;text-align:left;white-space:pre-line}
+.panda{font-size:40px}
+
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.dot{position:absolute;width:10px;height:10px;border-radius:50%;animation:fall linear forwards}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(720deg)}}
+</style>
+</head>
+<body>
+
+<div id="lockScreen">
+  <div class="lockCard">
+    <img src="poster.jpg" onerror="this.src='clean.jpg'" alt="Vanshika">
+    <h2>Hey Vanshika! 🐼</h2>
+    <p>A little surprise from your annoying friend<br>Enter your birth year</p>
+    <input id="passInput" type="password" placeholder="••••" maxlength="4" inputmode="numeric">
+    <button onclick="unlock()">Unlock 🎁</button>
+    <div id="err" class="error">Wrong code! Hint: 2007 😏</div>
+    <p style="margin-top:15px;font-size:12px;color:#BBB">ps: don't try to be oversmart</p>
+  </div>
 </div>
 
-<div id="main" class="hidden" style="padding:24px;text-align:center">
-<button class="back" onclick="go('lock')">←</button>
-<div style="margin-top:30px;font-size:36px">🎉</div>
-<div class="title">Happy Birthday<br>My Panda Vanshika!</div>
-<p style="font-size:13px;color:#7a4a52">CLICK ON GIFTS TO OPEN 🎁</p>
-<div class="gift" onclick="go('cake')"><div style="font-size:60px">🐼🎂</div><b>Sweet Treat</b><br><small>Panda with Cake</small></div>
-<div class="gift" onclick="go('photos')"><div style="font-size:60px">🐼📸</div><b>Our Photos</b><br><small>Clean collage — no quotes</small></div>
-<div class="gift" onclick="go('letter')"><div style="font-size:60px">🐼💌</div><b>Love Letter</b><br><small>Panda with Letter</small></div>
+<div id="page1" class="page hidden">
+  <div class="card">
+    <img src="poster.jpg" onerror="this.src='clean.jpg'">
+    <h1>Happy Birthday Vanshika! 🎂</h1>
+    <p class="sub">The most annoying + most favourite person</p>
+    <button class="btn" onclick="go(2)">Chal aage dekhte hai 👉</button>
+  </div>
 </div>
 
-<div id="cake" class="hidden" style="padding:20px;text-align:center">
-<button class="back" onclick="go('main')">←</button>
-<div class="title" style="margin-top:35px">Happy Birthday Panda! 🎂</div>
-<div class="card"><img class="img" src="clean.jpg"></div>
-<div style="font-size:80px">🎂</div>
-<h3 style="font-family:'Dancing Script';color:#c72a48">MAKE A WISH, MY PANDA!</h3>
-<div id="candle" style="font-size:50px;cursor:pointer" onclick="this.innerHTML='💨';document.getElementById('wish').classList.remove('hidden')">🕯️<br><small>Tap to blow!</small></div>
-<p id="wish" class="hidden" style="color:#c72a48;font-weight:700">Your wish is my promise! ❤️🐼</p>
+<div id="page2" class="page hidden">
+  <div class="card">
+    <div class="cake">🎂</div>
+    <h1>Make a wish!</h1>
+    <img src="clean.jpg" style="height:280px;object-fit:cover" onerror="this.style.display='none'">
+    <p class="sub">May your day be as bright as you, and your cake be bigger than your attitude 😜</p>
+    <button class="btn" onclick="blow()">Blow candles! 💨</button>
+  </div>
 </div>
 
-<div id="photos" class="hidden" style="padding:20px;text-align:center">
-<button class="back" onclick="go('main')">←</button>
-<div class="title" style="margin-top:35px">My Beautiful Panda</div>
-<div class="card"><img class="img" src="poster.jpg"></div>
-<div class="card"><img class="img" src="collage.jpg"></div>
-<p style="color:#7a4a52;font-size:13px">Just you, my Panda — no quotes, just your beautiful photos 🐼💖</p>
+<div id="page3" class="page hidden">
+  <div class="card">
+    <h1>Photo Dump 📸</h1>
+    <p class="sub">Proof that you actually look good sometimes</p>
+    <img src="collage.jpg" onerror="this.src='poster.jpg'">
+    <p style="margin:12px 0;color:#888;font-size:14px">Yellow dress supremacy + that black dress slay 💅<br>You’re photogenic, I’ll give you that.</p>
+    <button class="btn" onclick="go(4)">Okay okay next 👉</button>
+  </div>
 </div>
 
-<div id="letter" class="hidden" style="padding:20px;text-align:center">
-<button class="back" onclick="go('main')">←</button>
-<div class="title" style="margin-top:35px">To My Panda...</div>
-<div style="background:white;border-radius:18px;padding:18px;text-align:left;line-height:1.8;font-size:14px;box-shadow:0 6px 18px rgba(0,0,0,.12);margin-top:12px">
-<p><b>To my dearest Panda Vanshika,</b></p>
-<p>On your special day, I want you to know you are the cutest, most precious panda in my entire world. 🐼</p>
-<p>Every photo of you makes my day. Your smile is my favourite sunrise.</p>
-<p>Happy Birthday, my Panda. May all your dreams come true.</p>
-<p><b>I WANT TO ANNOY YOU for the rest of my life. ❤️🐼</b></p>
-<p style="text-align:right">— Aditya</p>
-</div>
-<button class="btn" onclick="go('final')">One more surprise →</button>
+<div id="page4" class="page hidden">
+  <div class="card">
+    <h1 style="font-size:32px">A letter from your annoying friend ✉️</h1>
+    <div class="letterText">Hey Vanshika,
+
+Happy Birthday pagal ladki! 🎉
+
+Look, I know I annoy you a lot, and you annoy me more, but honestly... you are one of the best people I have.
+
+You are funny, a little crazy, super cute, and you have that yellow-dress energy everywhere you go.
+
+Thanks for tolerating my bakwaas, for laughing at my stupid jokes, and for being you.
+
+I just want to say - stay the same, mat badalna. And yes, I will keep annoying you forever, that's non-negotiable.
+
+Happy Birthday once again, meri favourite headache! 🐼💖
+
+Your annoying but favourite friend,
+Aditya
+
+P.S. - Cake khilana mat bhulna!
+    </div>
+    <button class="btn" style="margin-top:18px" onclick="go(5)">Last one... ❤️</button>
+  </div>
 </div>
 
-<div id="final" class="hidden" style="padding:20px;text-align:center">
-<button class="back" onclick="go('main')">←</button>
-<div style="font-size:80px;margin-top:40px">🐼❤️</div>
-<div class="title">I WANT TO ANNOY YOU<br>for the rest of my life.</div>
-<div class="card" style="margin-top:18px"><img class="img" src="poster.jpg"></div>
-<p style="color:#c72a48;font-weight:600;margin-top:10px">Happy Birthday, My Panda Vanshika!</p>
-<p style="font-size:11px;color:#999">Passcode: 2007 • Made with love</p>
+<div id="page5" class="page hidden">
+  <div class="card">
+    <div style="font-size:50px">🐼❤️🐼</div>
+    <h1>I WANT TO ANNOY YOU TILL MY LAST BREATH</h1>
+    <img src="poster.jpg" onerror="this.src='clean.jpg'" style="margin:15px 0">
+    <p class="sub">Because friendship like ours is rare. You are stuck with me, Vanshika. Forever.</p>
+    <p style="font-size:24px;margin:10px 0">No matter what, I got you.</p>
+    <button class="btn" onclick="confettiBurst()">Again? 🥳</button>
+    <button class="btn-outline btn" onclick="go(1)">Start again ↩️</button>
+  </div>
 </div>
-</div>
+
+<div id="confetti" class="confetti"></div>
+
 <script>
-let cur=""; const ok="2007";
-function tap(n){ if(cur.length<4){ cur+=n; upd(); if(cur.length==4) chk(); }}
-function clr(){ cur=cur.slice(0,-1); upd(); }
-function upd(){ for(let i=1;i<=4;i++) document.getElementById('d'+i).classList.toggle('on', i<=cur.length); }
-function chk(){ if(cur===ok){ go('main'); cur=""; upd(); } else { document.getElementById('msg').innerText="WRONG PASSCODE 😭"; cur=""; setTimeout(()=>{upd(); document.getElementById('msg').innerText="Enter Passcode"},800); }}
-function go(id){ document.querySelectorAll('.page > div').forEach(d=>d.classList.add('hidden')); document.getElementById(id).classList.remove('hidden'); window.scrollTo(0,0); }
-</script></body></html>
+const pages=[1,2,3,4,5];
+function hideAll(){pages.forEach(n=>document.getElementById('page'+n).classList.add('hidden'))}
+function go(n){hideAll();document.getElementById('page'+n).classList.remove('hidden');window.scrollTo(0,0);if(n!==2)confettiBurst()}
+function blow(){confettiBurst();setTimeout(()=>go(3),800)}
+function unlock(){
+  const v=document.getElementById('passInput').value;
+  if(v==='2007'){
+    document.getElementById('lockScreen').style.display='none';
+    go(1);confettiBurst();
+  }else{
+    document.getElementById('err').style.display='block';
+    document.getElementById('passInput').value='';
+  }
+}
+document.getElementById('passInput').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+
+function confettiBurst(){
+  const c=document.getElementById('confetti');c.innerHTML='';
+  const colors=['#FF6B8A','#FFD93D','#6BCB77','#4D96FF','#FF8FA3'];
+  for(let i=0;i<50;i++){
+    const d=document.createElement('div');d.className='dot';
+    d.style.left=Math.random()*100+'vw';d.style.top='-10px';
+    d.style.background=colors[Math.floor(Math.random()*colors.length)];
+    d.style.animationDuration=(Math.random()*2+1)+'s';
+    d.style.animationDelay=Math.random()*0.5+'s';
+    c.appendChild(d);setTimeout(()=>d.remove(),3000);
+  }
+}
+</script>
+</body>
+</html>
